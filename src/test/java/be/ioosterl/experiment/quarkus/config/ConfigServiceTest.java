@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import javax.inject.Inject;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
 
 @QuarkusTest
 public class ConfigServiceTest {
@@ -26,5 +25,10 @@ public class ConfigServiceTest {
   @Test
   void injectConfigInTest() {
     assertThat(directConfig).isNotNull();
+  }
+
+  @Test
+  void injectConfigInService() {
+    assertThat(service.getValue()).isEqualTo("bar");
   }
 }
