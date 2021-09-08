@@ -1,0 +1,8 @@
+config:
+  direct: foo
+  value: bar
+  replacedValue: foo
+
+"%test":
+  config:
+    replacedValue: bar

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import javax.inject.Inject;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Fail.fail;
 
 @QuarkusTest
 public class ConfigServiceTest {
@@ -30,5 +31,10 @@ public class ConfigServiceTest {
   @Test
   void injectConfigInService() {
     assertThat(service.getValue()).isEqualTo("bar");
+  }
+
+  @Test
+  void overrideInjectedPropertyFromTestProfile() {
+    assertThat(service.getReplacedValue()).isEqualTo("bar");
   }
 }
