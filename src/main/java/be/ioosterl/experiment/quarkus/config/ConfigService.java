@@ -1,10 +1,8 @@
 package be.ioosterl.experiment.quarkus.config;
 
 import io.quarkus.runtime.QuarkusApplication;
-import io.quarkus.runtime.annotations.QuarkusMain;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-@QuarkusMain
 public class ConfigService implements QuarkusApplication {
 
   @ConfigProperty(name = "config.value")
