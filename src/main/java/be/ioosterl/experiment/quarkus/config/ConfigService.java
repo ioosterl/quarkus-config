@@ -1,16 +1,16 @@
 package be.ioosterl.experiment.quarkus.config;
 
+import io.quarkus.runtime.QuarkusApplication;
+import io.quarkus.runtime.annotations.QuarkusMain;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import javax.enterprise.context.ApplicationScoped;
+@QuarkusMain
+public class ConfigService implements QuarkusApplication {
 
-@ApplicationScoped
-public class ConfigService {
-
-  @ConfigProperty(name="config.value")
+  @ConfigProperty(name = "config.value")
   String value;
 
-  @ConfigProperty(name="config.replacedValue")
+  @ConfigProperty(name = "config.replacedValue")
   String replacedValue;
 
   public String getValue() {
@@ -19,5 +19,12 @@ public class ConfigService {
 
   public String getReplacedValue() {
     return replacedValue;
+  }
+
+  @Override
+  public int run(String... args) throws Exception {
+    System.out.println("config.value=" + getValue());
+    System.out.println("config.replacedValue=" + getReplacedValue());
+    return 0;
   }
 }
